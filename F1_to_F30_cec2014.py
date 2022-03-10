@@ -113,296 +113,156 @@ def F1(solution=None):
         result += (10**6)**(i/(len(solution)-1)) * solution[i]**2
     return result
 
-def F1(solution=None, name="Rotated High Conditioned Elliptic Function", shift_data_file="shift_data_1.txt", bias=100):
+def F1(solution=None, shift_data, matrix,bias):
+       
+    #   "F1":"Rotated High Conditioned Elliptic Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_1_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = dot(solution - shift_data, matrix)
     return f1_elliptic__(z) + bias
 
 
-def F2(solution=None, name="Rotated Bent Cigar Function", shift_data_file="shift_data_2.txt", bias=200):
+def F2(solution=None, shift_data, matrix,bias):
+    #   "F2":"Rotated Bent Cigar Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_2_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = dot(solution - shift_data, matrix)
     return f2_bent_cigar__(z) + bias
 
 
-def F3(solution=None, name="Rotated Discus Function", shift_data_file="shift_data_3.txt", bias=300):
+def F3(solution=None, shift_data, matrix,bias):
+    #   "F3":"Rotated Discus Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_3_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = dot(solution - shift_data, matrix)
     return f3_discus__(z) + bias
 
 
-def F4(solution=None, name="Shifted and Rotated Rosenbrock’s Function", shift_data_file="shift_data_4.txt", bias=400):
+def F4(solution=None, shift_data, matrix,bias):
+    #   "F4":"Shifted and Rotated Rosenbrock’s Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_4_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = 2.048 * (solution - shift_data) / 100
     z = dot(z, matrix) + 1
     return f4_rosenbrock__(z) + bias
 
 
-def F5(solution=None, name="Shifted and Rotated Ackley’s Function", shift_data_file="shift_data_5.txt", bias=500):
+def F5(solution=None, shift_data, matrix,bias):
+    #   "F5":"Shifted and Rotated Ackley’s Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_5_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = dot(solution - shift_data, matrix)
     return f5_ackley__(z) + bias
 
 
-def F6(solution=None, name="Shifted and Rotated Weierstrass Function", shift_data_file="shift_data_6.txt", bias=600):
+def F6(solution=None, shift_data, matrix,bias):
+    #   "F6":"Shifted and Rotated Weierstrass Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_6_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = 0.5 * (solution - shift_data) / 100
     z = dot(z, matrix)
     return f6_weierstrass__(z) + bias
 
 
-def F7(solution=None, name="Shifted and Rotated Griewank’s Function", shift_data_file="shift_data_7.txt", bias=700):
+def F7(solution=None, shift_data, matrix,bias):
+    #   "F7":"Shifted and Rotated Griewank’s Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_7_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = 600 * (solution - shift_data) / 100
     z = dot(z, matrix)
     return f7_griewank__(z) + bias
 
 
-def F8(solution=None, name="Shifted Rastrigin’s Function", shift_data_file="shift_data_8.txt", bias=800):
+def F8(solution=None, shift_data, matrix,bias):
+    #   "F8":"Shifted Rastrigin’s Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_8_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = 5.12 * (solution - shift_data) / 100
     z = dot(z, matrix)
     return f8_rastrigin__(z) + bias
 
 
-def F9(solution=None, name="Shifted and Rotated Rastrigin’s Function", shift_data_file="shift_data_9.txt", bias=900):
+def F9(solution=None, shift_data, matrix,bias):
+    #   "F9":"Shifted and Rotated Rastrigin’s Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_9_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = 5.12 * (solution - shift_data) / 100
     z = dot(z, matrix)
     return f9_modified_schwefel__(z) + bias
 
 
-def F10(solution=None, name="Shifted Schwefel’s Function", shift_data_file="shift_data_10.txt", bias=1000):
+def F10(solution=None, shift_data, matrix,bias):
+    #   "F10":"Shifted Schwefel’s Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_10_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = 1000 * (solution - shift_data) / 100
     z = dot(z, matrix)
     return f9_modified_schwefel__(z) + bias
 
 
-def F11(solution=None, name="Shifted and Rotated Schwefel’s Function", shift_data_file="shift_data_11.txt", bias=1100):
+def F11(solution=None, shift_data, matrix,bias):
+    #   "F11":"Shifted and Rotated Schwefel’s Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_11_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = 1000 * (solution - shift_data) / 100
     z = dot(z, matrix)
     return f9_modified_schwefel__(z) + bias
 
 
-def F12(solution=None, name="Shifted and Rotated Katsuura Function", shift_data_file="shift_data_12.txt", bias=1200):
+def F12(solution=None, shift_data, matrix,bias):
+    #   "F12":"Shifted and Rotated Katsuura Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_12_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = 5 * (solution - shift_data) / 100
     z = dot(z, matrix)
     return f10_katsuura__(z) + bias
 
 
-def F13(solution=None, name="Shifted and Rotated HappyCat Function", shift_data_file="shift_data_13.txt", bias=1300):
+def F13(solution=None, shift_data, matrix,bias):
+    #   "F13":"Shifted and Rotated HappyCat Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_13_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = 5 * (solution - shift_data) / 100
     z = dot(z, matrix)
     return f11_happy_cat__(z) + bias
 
 
-def F14(solution=None, name="Shifted and Rotated HGBat Function", shift_data_file="shift_data_14.txt", bias=1400):
+def F14(solution=None, shift_data, matrix,bias):
+    #   "F14":"Shifted and Rotated HGBat Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_14_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = 5 * (solution - shift_data) / 100
     z = dot(z, matrix)
     return f12_hgbat__(z) + bias
 
 
-def F15(solution=None, name="Shifted and Rotated Expanded Griewank’s plus Rosenbrock’s Function", shift_data_file="shift_data_15.txt", bias=1500):
+def F15(solution=None, shift_data, matrix,bias):
+    #   "F15":"Shifted and Rotated Expanded Griewank’s plus Rosenbrock’s Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_15_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = 5 * (solution - shift_data) / 100
     z = dot(z, matrix) + 1
     return f13_expanded_griewank__(z) + bias
 
 
-def F16(solution=None, name="Shifted and Rotated Expanded Scaffer’s F6 Function", shift_data_file="shift_data_16.txt", bias=1600):
+def F16(solution=None, shift_data, matrix,bias):
+    #   "F16":"Shifted and Rotated Expanded Scaffer’s F6 Function"
     problem_size = len(solution)
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION:
-        f_matrix = "M_16_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 2, 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
+    shift_data = shift_data[:problem_size]
     z = dot(solution - shift_data, matrix) + 1
     return f14_expanded_scaffer__(z) + bias
 
 
 ### ================== Hybrid function ========================
 
-def F17(solution=None, name="Hybrid Function 1", shift_data_file="shift_data_17.txt", bias=1700, shuffle=None):
+def F17(solution=None,shift_data, matrix,bias):
+    #   "F17":""Hybrid Function 1"
     problem_size = len(solution)
     p = array([0.3, 0.3, 0.4])
     n1 = int(ceil(p[0] * problem_size))
     n2 = int(ceil(p[1] * problem_size))
-
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = "M_17_D" + str(problem_size) + ".txt"
-        if shuffle is None:
-            f_shuffle = "shuffle_data_17_D" + str(problem_size) + ".txt"
-        else:
-            f_shuffle = "shuffle_data_" + str(shuffle) + "_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
-    shuffle = (load_shift_data__(f_shuffle)[:problem_size] - ones(problem_size)).astype(int)
+    shift_data = shift_data[:problem_size]
+    shuffle = (shift_data - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1+n2)]
     idx3 = shuffle[(n1+n2):]
@@ -410,27 +270,15 @@ def F17(solution=None, name="Hybrid Function 1", shift_data_file="shift_data_17.
     return f9_modified_schwefel__(mz[idx1]) + f8_rastrigin__(mz[idx2]) + f1_elliptic__(mz[idx3]) + bias
 
 
-def F18(solution=None, name="Hybrid Function 2", shift_data_file="shift_data_18.txt", bias=1800, shuffle=None):
+def F18(solution=None, shift_data, matrix,bias):
+    #   "F18":""Hybrid Function 2"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
     p = array([0.3, 0.3, 0.4])
     n1 = int(ceil(p[0] * problem_size))
     n2 = int(ceil(p[1] * problem_size))
 
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = "M_18_D" + str(problem_size) + ".txt"
-        if shuffle is None:
-            f_shuffle = "shuffle_data_18_D" + str(problem_size) + ".txt"
-        else:
-            f_shuffle = "shuffle_data_" + str(shuffle) + "_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
-    shuffle = (load_shift_data__(f_shuffle)[:problem_size] - ones(problem_size)).astype(int)
+    shuffle = ( shift_data - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1 + n2)]
     idx3 = shuffle[(n1 + n2):]
@@ -438,28 +286,16 @@ def F18(solution=None, name="Hybrid Function 2", shift_data_file="shift_data_18.
     return f2_bent_cigar__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f8_rastrigin__(mz[idx3]) + bias
 
 
-def F19(solution=None, name="Hybrid Function 3", shift_data_file="shift_data_19.txt", bias=1900, shuffle=None):
+def F19(solution=None, shift_data, matrix,bias):
+    #   "F19":""Hybrid Function 3"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
     p = array([0.2, 0.2, 0.3, 0.3])
     n1 = int(ceil(p[0] * problem_size))
     n2 = int(ceil(p[1] * problem_size))
     n3 = int(ceil(p[2] * problem_size))
 
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = "M_19_D" + str(problem_size) + ".txt"
-        if shuffle is None:
-            f_shuffle = "shuffle_data_19_D" + str(problem_size) + ".txt"
-        else:
-            f_shuffle = "shuffle_data_" + str(shuffle) + "_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
-    shuffle = (load_shift_data__(f_shuffle)[:problem_size] - ones(problem_size)).astype(int)
+    shuffle = (shift_data  - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1 + n2)]
     idx3 = shuffle[(n1 + n2):(n1+n2+n3)]
@@ -468,28 +304,17 @@ def F19(solution=None, name="Hybrid Function 3", shift_data_file="shift_data_19.
     return f7_griewank__(mz[idx1]) + f6_weierstrass__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) + f14_expanded_scaffer__(mz[idx4])+ bias
 
 
-def F20(solution=None, name="Hybrid Function 4", shift_data_file="shift_data_20.txt", bias=2000, shuffle=None):
+def F20(solution=None, shift_data, matrix, bias):
+    #   "F20":""Hybrid Function 4"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
     p = array([0.2, 0.2, 0.3, 0.3])
     n1 = int(ceil(p[0] * problem_size))
     n2 = int(ceil(p[1] * problem_size))
     n3 = int(ceil(p[2] * problem_size))
 
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = "M_20_D" + str(problem_size) + ".txt"
-        if shuffle is None:
-            f_shuffle = "shuffle_data_20_D" + str(problem_size) + ".txt"
-        else:
-            f_shuffle = "shuffle_data_" + str(shuffle) + "_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
-    shuffle = (load_shift_data__(f_shuffle)[:problem_size] - ones(problem_size)).astype(int)
+
+    shuffle = ( shift_data - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1 + n2)]
     idx3 = shuffle[(n1 + n2):(n1 + n2 + n3)]
@@ -498,29 +323,18 @@ def F20(solution=None, name="Hybrid Function 4", shift_data_file="shift_data_20.
     return f12_hgbat__(mz[idx1]) + f3_discus__(mz[idx2]) + f13_expanded_griewank__(mz[idx3]) + f8_rastrigin__(mz[idx4]) + bias
 
 
-def F21(solution=None, name="Hybrid Function 5", shift_data_file="shift_data_21.txt", bias=2100, shuffle=None):
+def F21(solution=None, shift_data, matrix, bias):
+    #   "F21":""Hybrid Function 5"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
     p = array([0.1, 0.2, 0.2, 0.2, 0.3])
     n1 = int(ceil(p[0] * problem_size))
     n2 = int(ceil(p[1] * problem_size))
     n3 = int(ceil(p[2] * problem_size))
     n4 = int(ceil(p[3] * problem_size))
 
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = "M_21_D" + str(problem_size) + ".txt"
-        if shuffle is None:
-            f_shuffle = "shuffle_data_21_D" + str(problem_size) + ".txt"
-        else:
-            f_shuffle = "shuffle_data_" + str(shuffle) + "_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
-    shuffle = (load_shift_data__(f_shuffle)[:problem_size] - ones(problem_size)).astype(int)
+
+    shuffle = ( shift_data - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1 + n2)]
     idx3 = shuffle[(n1 + n2):(n1 + n2 + n3)]
@@ -531,29 +345,18 @@ def F21(solution=None, name="Hybrid Function 5", shift_data_file="shift_data_21.
            f9_modified_schwefel__(mz[idx4]) + f1_elliptic__(mz[idx5]) + bias
 
 
-def F22(solution=None, name="Hybrid Function 6", shift_data_file="shift_data_22.txt", bias=2200, shuffle=None):
+def F22(solution=None, shift_data, matrix, bias):
+    #   "F22":""Hybrid Function 6"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
     p = array([0.1, 0.2, 0.2, 0.2, 0.3])
     n1 = int(ceil(p[0] * problem_size))
     n2 = int(ceil(p[1] * problem_size))
     n3 = int(ceil(p[2] * problem_size))
     n4 = int(ceil(p[3] * problem_size))
 
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = "M_22_D" + str(problem_size) + ".txt"
-        if shuffle is None:
-            f_shuffle = "shuffle_data_21_D" + str(problem_size) + ".txt"
-        else:
-            f_shuffle = "shuffle_data_" + str(shuffle) + "_D" + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_shift_data__(shift_data_file)[:problem_size]
-    matrix = load_matrix_data__(f_matrix)
-    shuffle = (load_shift_data__(f_shuffle)[:problem_size] - ones(problem_size)).astype(int)
+
+    shuffle = (shift_data - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1 + n2)]
     idx3 = shuffle[(n1 + n2):(n1 + n2 + n3)]
@@ -565,20 +368,14 @@ def F22(solution=None, name="Hybrid Function 6", shift_data_file="shift_data_22.
 
 ### ================== Composition function ========================
 
-def F23(solution=None, name="Composition Function 1", f_shift_file="shift_data_23.txt", f_matrix="M_23_D", f_bias=2300):
+def F23(solution=None, shift_data, matrix,f_bias):
+    #   "F23":"Composition Function 1"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
+    shift_data = shift_data[:, :problem_size]
     xichma = array([10, 20, 30, 40, 50])
     lamda = array([1, 1e-6, 1e-26, 1e-6, 1e-6])
     bias = array([0, 100, 200, 300, 400])
-
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = f_matrix + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_matrix_data__(f_shift_file)[:problem_size]
-    shift_data = shift_data[:, :problem_size]
-    matrix = load_matrix_data__(f_matrix)
 
     # 1. Rotated Rosenbrock’s Function F4’
     t1 = solution - shift_data[0]
@@ -610,20 +407,14 @@ def F23(solution=None, name="Composition Function 1", f_shift_file="shift_data_2
     return result + f_bias
 
 
-def F24(solution=None, name="Composition Function 2", f_shift_file="shift_data_24.txt", f_matrix="M_24_D", f_bias=2400):
+def F24(solution=None, shift_data, matrix,f_bias):
+    #   "F24":"Composition Function 2"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
+    shift_data = shift_data[:, :problem_size]
     xichma = array([20, 20, 20])
     lamda = array([1, 1, 1])
     bias = array([0, 100, 200])
-
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = f_matrix + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_matrix_data__(f_shift_file)[:problem_size]
-    shift_data = shift_data[:, :problem_size]
-    matrix = load_matrix_data__(f_matrix)
 
     # 1. Rotated Rosenbrock’s Function F4’
     t1 = solution - shift_data[0]
@@ -645,20 +436,14 @@ def F24(solution=None, name="Composition Function 2", f_shift_file="shift_data_2
     return result + f_bias
 
 
-def F25(solution=None, name="Composition Function 3", f_shift_file="shift_data_25.txt", f_matrix="M_25_D", f_bias=2500):
+def F25(solution=None, shift_data, matrix,f_bias):
+    #   "F25":"Composition Function 3"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
+    shift_data = shift_data[:, :problem_size]
     xichma = array([10, 30, 50])
     lamda = array([0.25, 1, 1e-7])
     bias = array([0, 100, 200])
-
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = f_matrix + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_matrix_data__(f_shift_file)[:problem_size]
-    shift_data = shift_data[:, :problem_size]
-    matrix = load_matrix_data__(f_matrix)
 
     # 1. Rotated Schwefel's Function F11’
     t1 = solution - shift_data[0]
@@ -680,20 +465,14 @@ def F25(solution=None, name="Composition Function 3", f_shift_file="shift_data_2
     return result + f_bias
 
 
-def F26(solution=None, name="Composition Function 4", f_shift_file="shift_data_26.txt", f_matrix="M_26_D", f_bias=2600):
+def F26(solution=None, shift_data, matrix,f_bias):
+    #   "F26":"Composition Function 4"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
+    shift_data = shift_data[:, :problem_size]
     xichma = array([10, 10, 10, 10, 10])
     lamda = array([0.25, 1, 1e-7, 2.5, 10])
     bias = array([0, 100, 200, 300, 400])
-
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = f_matrix + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_matrix_data__(f_shift_file)[:problem_size]
-    shift_data = shift_data[:, :problem_size]
-    matrix = load_matrix_data__(f_matrix)
 
     # 1. Rotated Schwefel's Function F11’
     t1 = solution - shift_data[0]
@@ -725,20 +504,14 @@ def F26(solution=None, name="Composition Function 4", f_shift_file="shift_data_2
     return result + f_bias
 
 
-def F27(solution=None, name="Composition Function 5", f_shift_file="shift_data_27.txt", f_matrix="M_27_D", f_bias=2700):
+def F27(solution=None, shift_data, matrix,f_bias):
+    #   "F27":"Composition Function 5"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
+    shift_data = shift_data[:, :problem_size]
     xichma = array([10, 10, 10, 20, 20])
     lamda = array([10, 10, 2.5, 25, 1e-6])
     bias = array([0, 100, 200, 300, 400])
-
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = f_matrix + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_matrix_data__(f_shift_file)[:problem_size]
-    shift_data = shift_data[:, :problem_size]
-    matrix = load_matrix_data__(f_matrix)
 
     # 1. Rotated HGBat Function F14'
     t1 = solution - shift_data[0]
@@ -770,20 +543,14 @@ def F27(solution=None, name="Composition Function 5", f_shift_file="shift_data_2
     return result + f_bias
 
 
-def F28(solution=None, name="Composition Function 6", f_shift_file="shift_data_28.txt", f_matrix="M_28_D", f_bias=2800):
+def F28(solution=None, shift_data, matrix,f_bias):
+    #   "F28":"Composition Function 6"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
+    shift_data = shift_data[:, :problem_size]
     xichma = array([10, 20, 30, 40, 50])
     lamda = array([2.5, 10, 2.5, 5e-4, 1e-6])
     bias = array([0, 100, 200, 300, 400])
-
-    if problem_size in SUPPORT_DIMENSION_2:
-        f_matrix = f_matrix + str(problem_size) + ".txt"
-    else:
-        print("CEC 2014 function only support problem size 10, 20, 30, 50, 100")
-        return 1
-    shift_data = load_matrix_data__(f_shift_file)[:problem_size]
-    shift_data = shift_data[:, :problem_size]
-    matrix = load_matrix_data__(f_matrix)
 
     # 1. Rotated Expanded Griewank’s plus Rosenbrock’s Function F15’
     t1 = solution - shift_data[0]
@@ -814,27 +581,37 @@ def F28(solution=None, name="Composition Function 6", f_shift_file="shift_data_2
     result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
     return result + f_bias
 
+def F17_aux(solution, bias=0, shuffle=29):
+    # reescrever F17
+    return 0
 
-def F29(solution=None, name="Composition Function 7", shift_data_file="shift_data_29.txt", f_bias=2900):
+def F18_aux(solution, bias=0, shuffle=29):
+    # reescrever F18
+    return 0
+
+def F19_aux(solution, bias=0, shuffle=29):
+    # reescrever F19
+    return 0
+
+def F29(solution=None, shift_data, matrix,f_bias):
     num_funcs = 3
+    #   "F29":"Composition Function 7"
+    problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
+    shift_data = shift_data[:, :problem_size]
     problem_size = len(solution)
     xichma = array([10, 30, 50])
     lamda = array([1, 1, 1])
     bias = array([0, 100, 200])
-
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    shift_data = load_matrix_data__(shift_data_file)[:problem_size]
-    shift_data = shift_data[:, :problem_size]
+    
 
     def __fi__(solution=None, idx=None):
         if idx == 0:
-            return F17(solution, bias=0, shuffle=29)
+            return F17_aux(solution, bias=0, shuffle=29)
         elif idx == 1:
-            return F18(solution, bias=0, shuffle=29)
+            return F18_aux(solution, bias=0, shuffle=29)
         else:
-            return F19(solution, bias=0, shuffle=29)
+            return F19_aux(solution, bias=0, shuffle=29)
 
     weights = ones(num_funcs)
     fits = ones(num_funcs)
@@ -850,27 +627,38 @@ def F29(solution=None, name="Composition Function 7", shift_data_file="shift_dat
         result += (weights[i] / sw) * fits[i]
     return result + f_bias
 
+def F20_aux(solution, bias=0, shuffle=29):
+    # reescrever F20
+    return 0
 
-def F30(solution=None, name="Composition Function 8", shift_data_file="shift_data_30.txt", f_bias=3000):
+def F21_aux(solution, bias=0, shuffle=29):
+    # reescrever F21
+    return 0
+
+def F22_aux(solution, bias=0, shuffle=29):
+    # reescrever F22
+    return 0
+
+
+def F30(solution=None, shift_data, matrix,f_bias):
     num_funcs = 3
+    #   "F30":"Composition Function 8"
     problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
+    shift_data = shift_data[:, :problem_size]
     xichma = array([10, 30, 50])
     lamda = array([1, 1, 1])
     bias = array([0, 100, 200])
 
-    if problem_size > 100:
-        print("CEC 2014 not support for problem size > 100")
-        return 1
-    shift_data = load_matrix_data__(shift_data_file)[:problem_size]
-    shift_data = shift_data[:, :problem_size]
+
 
     def __fi__(solution=None, idx=None):
         if idx == 0:
-            return F20(solution, bias=0, shuffle=30)
+            return F20_aux(solution, bias=0, shuffle=30)
         elif idx == 1:
-            return F21(solution, bias=0, shuffle=30)
+            return F21_aux(solution, bias=0, shuffle=30)
         else:
-            return F22(solution, bias=0, shuffle=30)
+            return F22_aux(solution, bias=0, shuffle=30)
 
     weights = ones(num_funcs)
     fits = ones(num_funcs)
