@@ -11,6 +11,11 @@ pi = np.pi
 exp = np.exp
 e = np.e
 
+global AA  , BB 
+
+AA = 0
+BB = 's'
+
 def TesteAB():
     result = AA+BB
     return result
