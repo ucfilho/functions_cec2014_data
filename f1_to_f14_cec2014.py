@@ -6,6 +6,9 @@
 import numpy as np
 sin = np.sin
 cos = np.cos
+sqrt = np.sqrt
+pi = np.pi
+exp = np.exp
 
 def F1(solution=None):
     result = 0
