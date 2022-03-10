@@ -11,6 +11,10 @@ pi = np.pi
 exp = np.exp
 e = np.e
 
+def TesteAB():
+    result = AA+BB
+    return result
+
 def F1(solution=None):
     result = 0
     for i in range(len(solution)):
