@@ -3,6 +3,9 @@
 # F5: Ackey   F6: Weierstrass  F7: griewank  F8: rastrigin
 # F9: modified Schwefel   F10: Katsuura  F11: happy cat  F12: hgbat
 # F13: expanded Griewank   F14:  expanded Scaffer
+import numpy as np
+sin = np.sin
+cos = np.cos
 
 def F1(solution=None):
     result = 0
