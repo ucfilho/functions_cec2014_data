@@ -9,6 +9,7 @@ cos = np.cos
 sqrt = np.sqrt
 pi = np.pi
 exp = np.exp
+e = np.e
 
 def F1(solution=None):
     result = 0
