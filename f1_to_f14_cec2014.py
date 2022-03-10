@@ -1,3 +1,9 @@
+# Note: cec2014 funtions not composed
+# F1: elliptic  F2: bent cigar  F3: discus  F4: Rosenbrock
+# F5: Ackey   F6: Weierstrass  F7: griewank  F8: rastrigin
+# F9: modified Schwefel   F10: Katsuura  F11: happy cat  F12: hgbat
+# F13: expanded Griewank   F14:  expanded Scaffer
+
 def F1(solution=None):
     result = 0
     for i in range(len(solution)):
