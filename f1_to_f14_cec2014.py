@@ -87,3 +87,9 @@ def F14(solution=None):
     for i in range(0, len(solution) - 1):
         result += __xy__(solution[i], solution[i + 1])
     return result
+
+def BiasValue():
+    result = {'F1':100.0, 'F2':200.0,'F3':300.0, 'F4':400.0,'F5':500.0, 'F6':600.0,'F7':700.0, 'F8':800.0,
+              'F8':800.0, 'F9':900.0,'F10':1000.0, 'F11':1100.0,'F12':1200.0, 'F13':1300.0,'F14':1400.0}
+    return result
+
