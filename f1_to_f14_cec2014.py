@@ -14,7 +14,7 @@ e = np.e
 global AA  , BB 
 
 AA = 0
-BB = 's'
+BB = 0
 
 def TesteAB():
     result = AA+BB
