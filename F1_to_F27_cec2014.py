@@ -103,7 +103,7 @@ def f14_expanded_scaffer__(solution=None):
     return result
 
 
-def F1(solution)# , shift_data , matrix ,f_bias ):
+def F1(solution):# , shift_data , matrix ,f_bias ):
        
     #   "F1":"Rotated High Conditioned Elliptic Function"
     #problem_size = len(solution)
