@@ -103,7 +103,7 @@ def f14_expanded_scaffer__(solution=None):
     return result
 
 
-def F1(solution=None, shift_data=None, matrix=None,bias=None):
+def F1(solution=None, shift_data=None, matrix=None,f_bias=None):
        
     #   "F1":"Rotated High Conditioned Elliptic Function"
     problem_size = len(solution)
@@ -112,7 +112,7 @@ def F1(solution=None, shift_data=None, matrix=None,bias=None):
     return f1_elliptic__(z) + bias
 
 
-def F2(solution=None, shift_data, matrix,bias):
+def F2(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F2":"Rotated Bent Cigar Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -120,7 +120,7 @@ def F2(solution=None, shift_data, matrix,bias):
     return f2_bent_cigar__(z) + bias
 
 
-def F3(solution=None, shift_data, matrix,bias):
+def F3(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F3":"Rotated Discus Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -128,7 +128,7 @@ def F3(solution=None, shift_data, matrix,bias):
     return f3_discus__(z) + bias
 
 
-def F4(solution=None, shift_data, matrix,bias):
+def F4(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F4":"Shifted and Rotated Rosenbrock’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -137,7 +137,7 @@ def F4(solution=None, shift_data, matrix,bias):
     return f4_rosenbrock__(z) + bias
 
 
-def F5(solution=None, shift_data, matrix,bias):
+def F5(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F5":"Shifted and Rotated Ackley’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -145,7 +145,7 @@ def F5(solution=None, shift_data, matrix,bias):
     return f5_ackley__(z) + bias
 
 
-def F6(solution=None, shift_data, matrix,bias):
+def F6(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F6":"Shifted and Rotated Weierstrass Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -154,7 +154,7 @@ def F6(solution=None, shift_data, matrix,bias):
     return f6_weierstrass__(z) + bias
 
 
-def F7(solution=None, shift_data, matrix,bias):
+def F7(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F7":"Shifted and Rotated Griewank’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -163,7 +163,7 @@ def F7(solution=None, shift_data, matrix,bias):
     return f7_griewank__(z) + bias
 
 
-def F8(solution=None, shift_data, matrix,bias):
+def F8(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F8":"Shifted Rastrigin’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -172,7 +172,7 @@ def F8(solution=None, shift_data, matrix,bias):
     return f8_rastrigin__(z) + bias
 
 
-def F9(solution=None, shift_data, matrix,bias):
+def F9(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F9":"Shifted and Rotated Rastrigin’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -181,7 +181,7 @@ def F9(solution=None, shift_data, matrix,bias):
     return f9_modified_schwefel__(z) + bias
 
 
-def F10(solution=None, shift_data, matrix,bias):
+def F10(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F10":"Shifted Schwefel’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -190,7 +190,7 @@ def F10(solution=None, shift_data, matrix,bias):
     return f9_modified_schwefel__(z) + bias
 
 
-def F11(solution=None, shift_data, matrix,bias):
+def F11(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F11":"Shifted and Rotated Schwefel’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -199,7 +199,7 @@ def F11(solution=None, shift_data, matrix,bias):
     return f9_modified_schwefel__(z) + bias
 
 
-def F12(solution=None, shift_data, matrix,bias):
+def F12(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F12":"Shifted and Rotated Katsuura Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -208,7 +208,7 @@ def F12(solution=None, shift_data, matrix,bias):
     return f10_katsuura__(z) + bias
 
 
-def F13(solution=None, shift_data, matrix,bias):
+def F13(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F13":"Shifted and Rotated HappyCat Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -217,7 +217,7 @@ def F13(solution=None, shift_data, matrix,bias):
     return f11_happy_cat__(z) + bias
 
 
-def F14(solution=None, shift_data, matrix,bias):
+def F14(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F14":"Shifted and Rotated HGBat Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -226,7 +226,7 @@ def F14(solution=None, shift_data, matrix,bias):
     return f12_hgbat__(z) + bias
 
 
-def F15(solution=None, shift_data, matrix,bias):
+def F15(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F15":"Shifted and Rotated Expanded Griewank’s plus Rosenbrock’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -235,7 +235,7 @@ def F15(solution=None, shift_data, matrix,bias):
     return f13_expanded_griewank__(z) + bias
 
 
-def F16(solution=None, shift_data, matrix,bias):
+def F16(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F16":"Shifted and Rotated Expanded Scaffer’s F6 Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -245,7 +245,7 @@ def F16(solution=None, shift_data, matrix,bias):
 
 ### ================== Hybrid function ========================
 
-def F17(solution=None,shift_data, matrix,bias):
+def F17(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F17":""Hybrid Function 1"
     problem_size = len(solution)
     p = array([0.3, 0.3, 0.4])
@@ -260,7 +260,7 @@ def F17(solution=None,shift_data, matrix,bias):
     return f9_modified_schwefel__(mz[idx1]) + f8_rastrigin__(mz[idx2]) + f1_elliptic__(mz[idx3]) + bias
 
 
-def F18(solution=None, shift_data, matrix,bias):
+def F18(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F18":""Hybrid Function 2"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -276,7 +276,7 @@ def F18(solution=None, shift_data, matrix,bias):
     return f2_bent_cigar__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f8_rastrigin__(mz[idx3]) + bias
 
 
-def F19(solution=None, shift_data, matrix,bias):
+def F19(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F19":""Hybrid Function 3"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -294,7 +294,7 @@ def F19(solution=None, shift_data, matrix,bias):
     return f7_griewank__(mz[idx1]) + f6_weierstrass__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) + f14_expanded_scaffer__(mz[idx4])+ bias
 
 
-def F20(solution=None, shift_data, matrix, bias):
+def F20(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F20":""Hybrid Function 4"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -313,7 +313,7 @@ def F20(solution=None, shift_data, matrix, bias):
     return f12_hgbat__(mz[idx1]) + f3_discus__(mz[idx2]) + f13_expanded_griewank__(mz[idx3]) + f8_rastrigin__(mz[idx4]) + bias
 
 
-def F21(solution=None, shift_data, matrix, bias):
+def F21(solution=None, shift_data=None, matrix=None,bias=None):
     #   "F21":""Hybrid Function 5"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -335,7 +335,7 @@ def F21(solution=None, shift_data, matrix, bias):
            f9_modified_schwefel__(mz[idx4]) + f1_elliptic__(mz[idx5]) + bias
 
 
-def F22(solution=None, shift_data, matrix, bias):
+def F22(solution=None, shift_data=None, matrix=None,bias=None):
     #   "F22":""Hybrid Function 6"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -358,7 +358,7 @@ def F22(solution=None, shift_data, matrix, bias):
 
 ### ================== Composition function ========================
 
-def F23(solution=None, shift_data, matrix,f_bias):
+def F23(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F23":"Composition Function 1"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -397,7 +397,7 @@ def F23(solution=None, shift_data, matrix,f_bias):
     return result + f_bias
 
 
-def F24(solution=None, shift_data, matrix,f_bias):
+def F24(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F24":"Composition Function 2"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -426,7 +426,7 @@ def F24(solution=None, shift_data, matrix,f_bias):
     return result + f_bias
 
 
-def F25(solution=None, shift_data, matrix,f_bias):
+def F25(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F25":"Composition Function 3"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -455,7 +455,7 @@ def F25(solution=None, shift_data, matrix,f_bias):
     return result + f_bias
 
 
-def F26(solution=None, shift_data, matrix,f_bias):
+def F26(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F26":"Composition Function 4"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -494,7 +494,7 @@ def F26(solution=None, shift_data, matrix,f_bias):
     return result + f_bias
 
 
-def F27(solution=None, shift_data, matrix,f_bias):
+def F27(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F27":"Composition Function 5"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
