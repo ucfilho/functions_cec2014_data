@@ -23,4 +23,20 @@ def NamesFunctions():
               'F25':"Composition Function 3",'F26':"Composition Function 4", 'F27':"Composition Function 5",
               'F28':"Composition Function 6",'F29':"Composition Function 7", 'F30':"Composition Function 8"}
     return result
-# F13: expanded Griewank   F14:  expanded Scaffer
+
+def TypeFunctions():
+    result = {'F1':'shift_rotate',
+              'F3':'shift_rotate', 
+              'F4':'shift_rotate','F5':'shift_rotate', 
+              'F6':'shift_rotate','F7':'shift_rotate', 
+              'F8':'shift_rotate', 'F9':'shift_rotate',
+              'F10':'shift_rotate', 'F11':'shift_rotate',
+              'F12':'shift_rotate', 'F13':'shift_rotate',
+              'F14':'shift_rotate','F15':'shift_rotate', 
+              'F16':'shift_rotate','F17':'shift_rotate', 
+              'F18':"hybrid",'F19':"hybrid", 
+              'F20':"hybrid",'F21':"hybrid",
+              'F22':"hybrid", 'F23':"composition",'F24':"composition", 
+              'F25':"composition",'F26':"composition", 'F27':"composition",
+              'F28':"composition",'F29':"composition", 'F30':"composition"}
+    return result
