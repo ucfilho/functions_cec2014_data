@@ -109,7 +109,7 @@ def F1(solution):# , shift_data , matrix ,f_bias ):
     #problem_size = len(solution)
     #shift_data = shift_data[:problem_size]
     #z = dot(solution - shift_data, matrix)
-    return f1_elliptic__(z)# + bias
+    return f1_elliptic__(solution)# + bias
 
 
 def F2(solution=None, shift_data=None, matrix=None,f_bias=None):
