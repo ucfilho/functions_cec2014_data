@@ -66,6 +66,9 @@ def f9_modified_schwefel__(solution=None):
     
     #z = solution + 4.209687462275036e+002
     result = 418.9829 * len(solution)
+    print('============')
+    print(result)
+    print('==============')
     for i in range(0, len(solution)):
         if z[i] > 500:
             result -= (500 - z[i]%500)*sin(sqrt(abs(500 - z[i]%500))) - (z[i] - 500)**2 / (10000*len(solution))
