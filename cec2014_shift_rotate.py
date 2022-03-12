@@ -564,7 +564,7 @@ def F27(solution , shift_data , matrix,shuffle):
 
     sw = sum([w1, w2, w3, w4, w5])
     result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
-    return result + f_bias
+    return result 
 
 '''
 def F28(solution=None, shift_data, matrix,f_bias):
