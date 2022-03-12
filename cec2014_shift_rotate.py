@@ -258,7 +258,8 @@ def F17(solution, shift_data, matrix,shuffle):
     idx2 = shuffle[n1:(n1+n2)]
     idx3 = shuffle[(n1+n2):]
     mz = dot(solution - shift_data, matrix)
-    result = f9_modified_schwefel__(mz[idx1]) + f8_rastrigin__(mz[idx2]) + f1_elliptic__(mz[idx3])
+    # result = f9_modified_schwefel__(mz[idx1]) + f8_rastrigin__(mz[idx2]) + f1_elliptic__(mz[idx3])
+    result = f8_rastrigin__(mz[idx2]) + f1_elliptic__(mz[idx3])
     
     return result
 
