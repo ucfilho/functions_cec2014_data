@@ -323,7 +323,7 @@ def F20(solution, shift_data, matrix,shuffle):
     idx3 = shuffle[(n1 + n2):(n1 + n2 + n3)]
     idx4 = shuffle[n1 + n2 + n3:]
     mz = dot(solution - shift_data, matrix)
-    resultf = f12_hgbat__(mz[idx1]) + f3_discus__(mz[idx2]) + f13_expanded_griewank__(mz[idx3]) + f8_rastrigin__(mz[idx4])
+    result = f12_hgbat__(mz[idx1]) + f3_discus__(mz[idx2]) + f13_expanded_griewank__(mz[idx3]) + f8_rastrigin__(mz[idx4])
     return  result
 
 
