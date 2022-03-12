@@ -21,8 +21,14 @@ concatenate = np.concatenate
 
 def f1_elliptic__(solution=None):
     result = 0
-    for i in range(len(solution)):
-        result += (10**6)**(i/(len(solution)-1)) * solution[i]**2
+    for ii in solution:
+        z = ii * 1.0
+        print('===elliptic====')
+        print(z)
+        print(len(z))
+        print('=========')
+        for i in range(len(z)):
+            result += (10**6)**(i/(len(z)-1)) * z[i]**2
     return result
 
 def f2_bent_cigar__(solution=None):
@@ -60,12 +66,7 @@ def f8_rastrigin__(solution=None):
 
 def f9_modified_schwefel__(solution=None):
     z = solution + 4.209687462275036e+002
-    '''
-    z =1.0*solution
-    for i in range(len(solution)):
-        z[i] = z[i] + 4.209687462275036e+002
-    '''
-    #z = solution + 4.209687462275036e+002
+
     result = 418.9829 * z.shape[1]
     
     w = 1.0* z
@@ -74,9 +75,7 @@ def f9_modified_schwefel__(solution=None):
         z = ii * 1.0
 
         for i in range(0, len(solution)):
-            print('====z[i]=====')
-            print(w.shape[1])
-            print('==============')
+
             if z[i] > 500:
                 result -= (500 - z[i]%500)*sin(sqrt(abs(500 - z[i]%500))) - (z[i] - 500)**2 / (10000*len(solution))
             elif z[i] < -500:
@@ -276,9 +275,9 @@ def F17(solution, shift_data, matrix,shuffle):
     # result = f9_modified_schwefel__(mz[idx1]) + f8_rastrigin__(mz[idx2]) + f1_elliptic__(mz[idx3])
     # result = f8_rastrigin__(mz[idx2]) + f1_elliptic__(mz[idx3])
     #result = f8_rastrigin__(mz[idx2]) 
-    #result = f1_elliptic__(mz[idx3])
+    result = f1_elliptic__(mz[idx3])
     #result = f1_elliptic__(mz[idx2]) # bad....!!!
-    result = f9_modified_schwefel__(mz[idx2]) # bad....!!!
+    #result = f9_modified_schwefel__(mz[idx2]) # bad....!!!
     return result
 
 
