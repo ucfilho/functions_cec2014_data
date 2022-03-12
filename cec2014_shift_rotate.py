@@ -274,7 +274,7 @@ def F17(solution, shift_data, matrix,shuffle):
     #result = f8_rastrigin__(mz[idx2]) 
     #result = f1_elliptic__(mz[idx3])
     #result = f1_elliptic__(mz[idx2]) # bad....!!!
-    result = f9_modified_schwefel__(mz[idx1]) # bad....!!!
+    result = f9_modified_schwefel__(mz[idx2]) # bad....!!!
     return result
 
 
