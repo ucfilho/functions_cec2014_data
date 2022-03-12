@@ -66,7 +66,7 @@ def f9_modified_schwefel__(solution=None):
         z[i] = z[i] + 4.209687462275036e+002
     '''
     #z = solution + 4.209687462275036e+002
-    result = 418.9829 * len(solution)
+    result = 418.9829 * z.shape[1]
     
     w = 1.0* z
     
@@ -75,7 +75,7 @@ def f9_modified_schwefel__(solution=None):
 
         for i in range(0, len(solution)):
             print('====z[i]=====')
-            print(w.shape)
+            print(w.shap[1])
             print('==============')
             if z[i] > 500:
                 result -= (500 - z[i]%500)*sin(sqrt(abs(500 - z[i]%500))) - (z[i] - 500)**2 / (10000*len(solution))
