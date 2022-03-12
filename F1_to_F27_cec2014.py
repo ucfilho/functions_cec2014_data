@@ -187,18 +187,8 @@ def F16(solution):
 
 def F17(solution):
     #   "F17":""Hybrid Function 1"
-    problem_size = len(solution)
-    p = array([0.3, 0.3, 0.4])
-    n1 = int(ceil(p[0] * problem_size))
-    n2 = int(ceil(p[1] * problem_size))
-    shift_data = shift_data[:problem_size]
-    shuffle = (shift_data - ones(problem_size)).astype(int)
-    idx1 = shuffle[:n1]
-    idx2 = shuffle[n1:(n1+n2)]
-    idx3 = shuffle[(n1+n2):]
-    mz = dot(solution - shift_data, matrix)
-    return f9_modified_schwefel__(mz[idx1]) + f8_rastrigin__(mz[idx2]) + f1_elliptic__(mz[idx3]) + bias
-
+  
+    return solution
 
 def F18(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F18":""Hybrid Function 2"
