@@ -393,7 +393,7 @@ def F22(solution, shift_data, matrix,shuffle):
 
 ### ================== Composition function ========================
 
-def F23(solution=None, shift_data=None, matrix=None,f_bias=None):
+def F23(solution, shift_data, matrix,shuffle):
     #   "F23":"Composition Function 1"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -429,7 +429,7 @@ def F23(solution=None, shift_data=None, matrix=None,f_bias=None):
 
     sw = sum([w1, w2, w3, w4, w5])
     result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
-    return result + f_bias
+    return result 
 
 
 def F24(solution=None, shift_data=None, matrix=None,f_bias=None):
