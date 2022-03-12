@@ -74,15 +74,24 @@ def f9_modified_schwefel__(solution=None):
     result = 418.9829 * z.shape[1]
     
     w = 1.0* z
-    
-    for ii in w:
-        z = ii * 1.0
+    if(len(solution.shape)>1):
+        for ii in w:
+            z = ii * 1.0
 
-        for i in range(0, len(solution)):
+            for i in range(0, len(solution)):
 
-            if z[i] > 500:
+                if z[i] > 500:
+                    result -= (500 - z[i]%500)*sin(sqrt(abs(500 - z[i]%500))) - (z[i] - 500)**2 / (10000*len(solution))
+                elif z[i] < -500:
+                    result -= (z[i]%500 - 500)*sin(sqrt(abs(z[i]%500 - 500))) - (z[i] + 500)**2 / (10000*len(solution))
+                else:
+                    result -= z[i]*sin(abs(z[i])**0.5)
+    else:
+        num = solution.shape[0]
+        for i in range(num):
+            if solution[i] > 500:
                 result -= (500 - z[i]%500)*sin(sqrt(abs(500 - z[i]%500))) - (z[i] - 500)**2 / (10000*len(solution))
-            elif z[i] < -500:
+            elif solution[i] < -500:
                 result -= (z[i]%500 - 500)*sin(sqrt(abs(z[i]%500 - 500))) - (z[i] + 500)**2 / (10000*len(solution))
             else:
                 result -= z[i]*sin(abs(z[i])**0.5)
