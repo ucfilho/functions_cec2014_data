@@ -103,7 +103,7 @@ def f14_expanded_scaffer__(solution=None):
         result += __xy__(solution[i], solution[i + 1])
     return result
 
-def F1(solution , shift_data , matrix):
+def F1(solution , shift_data , matrix,shuffle):
        
     #   "F1":"Rotated High Conditioned Elliptic Function"
     problem_size = len(solution)
@@ -112,7 +112,7 @@ def F1(solution , shift_data , matrix):
     return z
 
 
-def F2(solution , shift_data , matrix):
+def F2(solution , shift_data , matrix,shuffle):
     #   "F2":"Rotated Bent Cigar Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -120,7 +120,7 @@ def F2(solution , shift_data , matrix):
     return z
 
 
-def F3(solution , shift_data , matrix):
+def F3(solution , shift_data , matrix,shuffle):
     #   "F3":"Rotated Discus Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -128,7 +128,7 @@ def F3(solution , shift_data , matrix):
     return z
 
 
-def F4(solution , shift_data , matrix):
+def F4(solution , shift_data , matrix,shuffle):
     #   "F4":"Shifted and Rotated Rosenbrock’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -137,7 +137,7 @@ def F4(solution , shift_data , matrix):
     return z
 
 
-def F5(solution , shift_data , matrix):
+def F5(solution , shift_data , matrix,shuffle):
     #   "F5":"Shifted and Rotated Ackley’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -145,7 +145,7 @@ def F5(solution , shift_data , matrix):
     return z
 
 
-def F6(solution , shift_data , matrix):
+def F6(solution , shift_data , matrix,shuffle):
     #   "F6":"Shifted and Rotated Weierstrass Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -154,7 +154,7 @@ def F6(solution , shift_data , matrix):
     return z
 
 
-def F7(solution , shift_data , matrix):
+def F7(solution , shift_data , matrix,shuffle):
     #   "F7":"Shifted and Rotated Griewank’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -163,7 +163,7 @@ def F7(solution , shift_data , matrix):
     return z
 
 
-def F8(solution , shift_data , matrix):
+def F8(solution , shift_data , matrix,shuffle):
     #   "F8":"Shifted Rastrigin’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -172,7 +172,7 @@ def F8(solution , shift_data , matrix):
     return z
 
 
-def F9(solution , shift_data , matrix):
+def F9(solution , shift_data , matrix,shuffle):
     #   "F9":"Shifted and Rotated Rastrigin’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -181,7 +181,7 @@ def F9(solution , shift_data , matrix):
     return z
 
 
-def F10(solution , shift_data , matrix):
+def F10(solution , shift_data , matrix,shuffle):
     #   "F10":"Shifted Schwefel’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -190,7 +190,7 @@ def F10(solution , shift_data , matrix):
     return f9_modified_schwefel__(z) + bias
 
 
-def F11(solution , shift_data , matrix):
+def F11(solution , shift_data , matrix,shuffle):
     #   "F11":"Shifted and Rotated Schwefel’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -199,7 +199,7 @@ def F11(solution , shift_data , matrix):
     return z
 
 
-def F12(solution , shift_data , matrix):
+def F12(solution , shift_data , matrix,shuffle):
     #   "F12":"Shifted and Rotated Katsuura Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -208,7 +208,7 @@ def F12(solution , shift_data , matrix):
     return z
 
 
-def F13(solution , shift_data , matrix):
+def F13(solution , shift_data , matrix,shuffle):
     #   "F13":"Shifted and Rotated HappyCat Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -217,7 +217,7 @@ def F13(solution , shift_data , matrix):
     return z
 
 
-def F14(solution , shift_data , matrix):
+def F14(solution , shift_data , matrix,shuffle):
     #   "F14":"Shifted and Rotated HGBat Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -226,7 +226,7 @@ def F14(solution , shift_data , matrix):
     return z
 
 
-def F15(solution , shift_data , matrix):
+def F15(solution , shift_data , matrix,shuffle):
     #   "F15":"Shifted and Rotated Expanded Griewank’s plus Rosenbrock’s Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -235,7 +235,7 @@ def F15(solution , shift_data , matrix):
     return z
 
 
-def F16(solution , shift_data , matrix):
+def F16(solution , shift_data , matrix,shuffle):
     #   "F16":"Shifted and Rotated Expanded Scaffer’s F6 Function"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -245,14 +245,14 @@ def F16(solution , shift_data , matrix):
 
 ### ================== Hybrid function ========================
 
-def F17(solution, shift_data, matrix):
+def F17(solution, shift_data, matrix,shuffle):
     #   "F17":""Hybrid Function 1"
     problem_size = len(solution)
     p = array([0.3, 0.3, 0.4])
     n1 = int(ceil(p[0] * problem_size))
     n2 = int(ceil(p[1] * problem_size))
     shift_data = shift_data[:problem_size]
-    shuffle = (shift_data - ones(problem_size)).astype(int)
+    shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1+n2)]
     idx3 = shuffle[(n1+n2):]
@@ -262,7 +262,7 @@ def F17(solution, shift_data, matrix):
     return result
 
 
-def F18(solution, shift_data, matrix):
+def F18(solution, shift_data, matrix,shuffle):
     #   "F18":""Hybrid Function 2"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -270,7 +270,7 @@ def F18(solution, shift_data, matrix):
     n1 = int(ceil(p[0] * problem_size))
     n2 = int(ceil(p[1] * problem_size))
 
-    shuffle = ( shift_data - ones(problem_size)).astype(int)
+    shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1 + n2)]
     idx3 = shuffle[(n1 + n2):]
@@ -279,7 +279,7 @@ def F18(solution, shift_data, matrix):
     return result 
 
 
-def F19(solution, shift_data, matrix):
+def F19(solution, shift_data, matrix,shuffle):
     #   "F19":""Hybrid Function 3"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -288,7 +288,7 @@ def F19(solution, shift_data, matrix):
     n2 = int(ceil(p[1] * problem_size))
     n3 = int(ceil(p[2] * problem_size))
 
-    shuffle = (shift_data  - ones(problem_size)).astype(int)
+    shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1 + n2)]
     idx3 = shuffle[(n1 + n2):(n1+n2+n3)]
@@ -298,7 +298,7 @@ def F19(solution, shift_data, matrix):
     return result
 
 
-def F20(solution, shift_data, matrix):
+def F20(solution, shift_data, matrix,shuffle):
     #   "F20":""Hybrid Function 4"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -307,8 +307,7 @@ def F20(solution, shift_data, matrix):
     n2 = int(ceil(p[1] * problem_size))
     n3 = int(ceil(p[2] * problem_size))
 
-
-    shuffle = ( shift_data - ones(problem_size)).astype(int)
+    shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1 + n2)]
     idx3 = shuffle[(n1 + n2):(n1 + n2 + n3)]
@@ -318,7 +317,7 @@ def F20(solution, shift_data, matrix):
     return  result
 
 
-def F21(solution, shift_data, matrix):
+def F21(solution, shift_data, matrix,shuffle):
     #   "F21":""Hybrid Function 5"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -329,7 +328,7 @@ def F21(solution, shift_data, matrix):
     n4 = int(ceil(p[3] * problem_size))
 
 
-    shuffle = ( shift_data - ones(problem_size)).astype(int)
+    shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1 + n2)]
     idx3 = shuffle[(n1 + n2):(n1 + n2 + n3)]
@@ -341,7 +340,7 @@ def F21(solution, shift_data, matrix):
     return  result
 
 
-def F22(solution, shift_data, matrix):
+def F22(solution, shift_data, matrix,shuffle):
     #   "F22":""Hybrid Function 6"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -352,7 +351,7 @@ def F22(solution, shift_data, matrix):
     n4 = int(ceil(p[3] * problem_size))
 
 
-    shuffle = (shift_data - ones(problem_size)).astype(int)
+    shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
     idx1 = shuffle[:n1]
     idx2 = shuffle[n1:(n1 + n2)]
     idx3 = shuffle[(n1 + n2):(n1 + n2 + n3)]
