@@ -58,7 +58,12 @@ def f8_rastrigin__(solution=None):
     return sum(solution ** 2 - 10 * cos(2 * pi * solution) + 10)
 
 def f9_modified_schwefel__(solution=None):
-    z = solution + 4.209687462275036e+002
+    
+    z =1.0*solution
+    for i in range(len(solution)):
+        z[i] = z[i] + 4.209687462275036e+002
+    
+    #z = solution + 4.209687462275036e+002
     result = 418.9829 * len(solution)
     for i in range(0, len(solution)):
         if z[i] > 500:
