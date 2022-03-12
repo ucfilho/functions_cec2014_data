@@ -67,19 +67,22 @@ def f9_modified_schwefel__(solution=None):
     '''
     #z = solution + 4.209687462275036e+002
     result = 418.9829 * len(solution)
-    print('============')
-    print(result)
-    print('==============')
-    for i in range(0, len(solution)):
-        print('====z[i]=====')
-        print(z)
-        print('==============')
-        if z[i] > 500:
-            result -= (500 - z[i]%500)*sin(sqrt(abs(500 - z[i]%500))) - (z[i] - 500)**2 / (10000*len(solution))
-        elif z[i] < -500:
-            result -= (z[i]%500 - 500)*sin(sqrt(abs(z[i]%500 - 500))) - (z[i] + 500)**2 / (10000*len(solution))
-        else:
-            result -= z[i]*sin(abs(z[i])**0.5)
+    
+    w = 1.0* z
+    
+    for ii in w:
+        z = ii * 1.0
+
+        for i in range(0, len(solution)):
+            print('====z[i]=====')
+            print(z)
+            print('==============')
+            if z[i] > 500:
+                result -= (500 - z[i]%500)*sin(sqrt(abs(500 - z[i]%500))) - (z[i] - 500)**2 / (10000*len(solution))
+            elif z[i] < -500:
+                result -= (z[i]%500 - 500)*sin(sqrt(abs(z[i]%500 - 500))) - (z[i] + 500)**2 / (10000*len(solution))
+            else:
+                result -= z[i]*sin(abs(z[i])**0.5)
     return result
 
 def f10_katsuura__(solution=None):
