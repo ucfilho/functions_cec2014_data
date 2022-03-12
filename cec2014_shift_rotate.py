@@ -436,7 +436,7 @@ def F24(solution , shift_data , matrix,shuffle):
     #   "F24":"Composition Function 2"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
-    shift_data = shift_data[:, :problem_size]
+    #shift_data = shift_data[:, :problem_size]
     xichma = array([20, 20, 20])
     lamda = array([1, 1, 1])
     bias = array([0, 100, 200])
