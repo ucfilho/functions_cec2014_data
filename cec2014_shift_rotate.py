@@ -201,7 +201,8 @@ def F11(solution , shift_data , matrix,shuffle):
 
 def F12(solution , shift_data , matrix,shuffle):
     #   "F12":"Shifted and Rotated Katsuura Function"
-    problem_size = len(solution)
+    #problem_size = len(solution)
+    problem_size =solution.shape[0]
     shift_data = shift_data[:problem_size]
     z = 5 * (solution - shift_data) / 100
     z = dot(z, matrix)
