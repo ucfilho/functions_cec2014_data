@@ -356,8 +356,8 @@ def F21(solution, shift_data, matrix,shuffle):
     print('=== mz[idx5] ====')
     print(mz[idx5])
     print('=========')
-    result = f14_expanded_scaffer__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) + f1_elliptic__(mz[idx5]) 
-    #result = result + f9_modified_schwefel__(mz[idx4]) 
+    result = f14_expanded_scaffer__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) 
+    result = result + f9_modified_schwefel__(mz[idx4]) + f1_elliptic__(mz[idx5]) 
     return  result
 
 
