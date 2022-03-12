@@ -30,8 +30,9 @@ def f1_elliptic__(solution=None):
             for i in range(len(z)):
                 result += (10**6)**(i/(len(z)-1)) * z[i]**2           
     else:
-        for i in range(z.shape[0]):
-            result += (10**6)**(i/(len(z)-1)) * z[i]**2
+        num = solution.shape[0]
+        for i in range(num):
+            result += (10**6)**(i/num-1)) * solution[i]**2
     return result
 
 def f2_bent_cigar__(solution=None):
