@@ -432,7 +432,7 @@ def F23(solution, shift_data, matrix,shuffle):
     return result 
 
 
-def F24(solution=None, shift_data=None, matrix=None,f_bias=None):
+def F24(solution , shift_data , matrix,shuffle):
     #   "F24":"Composition Function 2"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -458,10 +458,10 @@ def F24(solution=None, shift_data=None, matrix=None,f_bias=None):
 
     sw = sum([w1, w2, w3])
     result = (w1 * g1 + w2 * g2 + w3 * g3) / sw
-    return result + f_bias
+    return result 
 
 
-def F25(solution=None, shift_data=None, matrix=None,f_bias=None):
+def F25(solution , shift_data , matrix,shuffle):
     #   "F25":"Composition Function 3"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -487,10 +487,10 @@ def F25(solution=None, shift_data=None, matrix=None,f_bias=None):
 
     sw = sum([w1, w2, w3])
     result = (w1 * g1 + w2 * g2 + w3 * g3) / sw
-    return result + f_bias
+    return result
 
 
-def F26(solution=None, shift_data=None, matrix=None,f_bias=None):
+def F26(solution , shift_data , matrix,shuffle):
     #   "F26":"Composition Function 4"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -526,10 +526,9 @@ def F26(solution=None, shift_data=None, matrix=None,f_bias=None):
 
     sw = sum([w1, w2, w3, w4, w5])
     result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
-    return result + f_bias
+    return result
 
-
-def F27(solution=None, shift_data=None, matrix=None,f_bias=None):
+def F27(solution , shift_data , matrix,shuffle):
     #   "F27":"Composition Function 5"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
