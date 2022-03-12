@@ -32,7 +32,7 @@ def f1_elliptic__(solution=None):
     else:
         num = solution.shape[0]
         for i in range(num):
-            result += (10**6)**(i/num-1)) * solution[i]**2
+            result += (10**6)**(i/num-1) * solution[i]**2
     return result
 
 def f2_bent_cigar__(solution=None):
