@@ -396,6 +396,9 @@ def F22(solution, shift_data, matrix,shuffle):
 def F23(solution, shift_data, matrix,shuffle):
     #   "F23":"Composition Function 1"
     problem_size = len(solution)
+    print("=== problem size===")
+    print(len(solution))
+    print("=============")
     shift_data = shift_data[:problem_size]
     shift_data = shift_data[:, :problem_size]
     xichma = array([10, 20, 30, 40, 50])
