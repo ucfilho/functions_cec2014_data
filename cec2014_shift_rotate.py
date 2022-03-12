@@ -345,8 +345,8 @@ def F21(solution, shift_data, matrix,shuffle):
     idx4 = shuffle[(n1+n2+n3):(n1+n2+n3+n4)]
     idx5 = shuffle[n1+n2+n3+n4:]
     mz = dot(solution - shift_data, matrix)
-    result = f14_expanded_scaffer__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) 
-    #result = result + f9_modified_schwefel__(mz[idx4]) + f1_elliptic__(mz[idx5]) 
+    result = f14_expanded_scaffer__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) + f1_elliptic__(mz[idx5]) 
+    #result = result + f9_modified_schwefel__(mz[idx4]) 
     return  result
 
 
