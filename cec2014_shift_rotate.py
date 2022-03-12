@@ -21,12 +21,16 @@ concatenate = np.concatenate
 
 def f1_elliptic__(solution=None):
     result = 0
-    for ii in solution:
-        z = ii * 1.0
-        print('===== z=====')
-        print(z)
-        print('==========')
-        for i in range(len(z)):
+    if(len(solution.shape)>1):
+        for ii in solution:
+            z = ii * 1.0
+            print('===== z=====')
+            print(z)
+            print('==========')
+            for i in range(len(z)):
+                result += (10**6)**(i/(len(z)-1)) * z[i]**2           
+    else:
+        for i in range(z.shape[0]):
             result += (10**6)**(i/(len(z)-1)) * z[i]**2
     return result
 
