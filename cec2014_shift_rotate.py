@@ -70,6 +70,9 @@ def f9_modified_schwefel__(solution=None):
     print(result)
     print('==============')
     for i in range(0, len(solution)):
+        print('====z[i]=====')
+        print(z[i])
+        print('==============')
         if z[i] > 500:
             result -= (500 - z[i]%500)*sin(sqrt(abs(500 - z[i]%500))) - (z[i] - 500)**2 / (10000*len(solution))
         elif z[i] < -500:
