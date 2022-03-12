@@ -71,10 +71,11 @@ def f8_rastrigin__(solution=None):
 def f9_modified_schwefel__(solution=None):
     z = solution + 4.209687462275036e+002
 
-    result = 418.9829 * z.shape[1]
+    
     
     w = 1.0* z
     if(len(solution.shape)>1):
+        result = 418.9829 * z.shape[1]
         for ii in w:
             z = ii * 1.0
 
@@ -88,6 +89,7 @@ def f9_modified_schwefel__(solution=None):
                     result -= z[i]*sin(abs(z[i])**0.5)
     else:
         num = solution.shape[0]
+        result = 418.9829 * num
         for i in range(num):
             if solution[i] > 500:
                 result -= (500 - z[i]%500)*sin(sqrt(abs(500 - z[i]%500))) - (z[i] - 500)**2 / (10000*len(solution))
