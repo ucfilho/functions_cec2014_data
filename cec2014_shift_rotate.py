@@ -396,9 +396,6 @@ def F22(solution, shift_data, matrix,shuffle):
 def F23(solution, shift_data, matrix,shuffle):
     #   "F23":"Composition Function 1"
     problem_size = len(solution)
-    print("=== problem size===")
-    print( problem_size)
-    print("=============")
     shift_data = shift_data[:problem_size]
     #shift_data = shift_data[:, :problem_size]
     xichma = array([10, 20, 30, 40, 50])
@@ -468,7 +465,7 @@ def F25(solution , shift_data , matrix,shuffle):
     #   "F25":"Composition Function 3"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
-    shift_data = shift_data[:, :problem_size]
+    #shift_data = shift_data[:, :problem_size]
     xichma = array([10, 30, 50])
     lamda = array([0.25, 1, 1e-7])
     bias = array([0, 100, 200])
@@ -497,7 +494,7 @@ def F26(solution , shift_data , matrix,shuffle):
     #   "F26":"Composition Function 4"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
-    shift_data = shift_data[:, :problem_size]
+    #shift_data = shift_data[:, :problem_size]
     xichma = array([10, 10, 10, 10, 10])
     lamda = array([0.25, 1, 1e-7, 2.5, 10])
     bias = array([0, 100, 200, 300, 400])
