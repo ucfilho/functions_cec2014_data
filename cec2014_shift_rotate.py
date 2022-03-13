@@ -566,8 +566,8 @@ def F27(solution , shift_data , matrix,shuffle):
     result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
     return result 
 
-'''
-def F28(solution=None, shift_data, matrix,f_bias):
+
+def F28(solution , shift_data , matrix,shuffle):
     #   "F28":"Composition Function 6"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -597,7 +597,8 @@ def F28(solution=None, shift_data, matrix,f_bias):
     w5 = (1.0 / sqrt(sum(t5 ** 2))) * exp(-sum(t5 ** 2) / (2 * problem_size * xichma[4] ** 2))
     sw = sum([w1, w2, w3, w4, w5])
     result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
-    return result + f_bias
+    return result
+'''
 def F17_aux()#solution=None, name="Hybrid Function 1", shift_data_file="shift_data_17.txt", bias=1700, shuffle=None):
     problem_size = len(solution)
     p = array([0.3, 0.3, 0.4])
