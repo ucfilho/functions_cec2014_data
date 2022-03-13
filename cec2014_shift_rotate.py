@@ -532,7 +532,7 @@ def F27(solution , shift_data , matrix,shuffle):
     #   "F27":"Composition Function 5"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
-    shift_data = shift_data[:, :problem_size]
+    #shift_data = shift_data[:, :problem_size]
     xichma = array([10, 10, 10, 20, 20])
     lamda = array([10, 10, 2.5, 25, 1e-6])
     bias = array([0, 100, 200, 300, 400])
