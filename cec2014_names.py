@@ -38,5 +38,5 @@ def TypeFunctions():
               'F20':"hybrid",'F21':"hybrid",
               'F22':"hybrid", 'F23':"composition",'F24':"composition", 
               'F25':"composition",'F26':"composition", 'F27':"composition",
-              'F28':"composition",'F29':"composition", 'F30':"composition"}
+              'F28':"extracomposition",'F29':"extracomposition", 'F30':"extracomposition"}
     return result
