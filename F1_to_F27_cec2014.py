@@ -468,7 +468,7 @@ def F27(solution=None, shift_data=None, matrix=None,f_bias=None):
     return result + f_bias
 
 
-def F28(solution=None, shift_data, matrix,f_bias):
+def F28(solution=None, shift_data=None, matrix=None,f_bias=None):
     #   "F28":"Composition Function 6"
     problem_size = len(solution)
     shift_data = shift_data[:problem_size]
@@ -592,7 +592,7 @@ def F19_aux()#solution=None, name="Hybrid Function 3", shift_data_file="shift_da
     mz = dot(solution - shift_data, matrix)
     return f7_griewank__(mz[idx1]) + f6_weierstrass__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) + f14_expanded_scaffer__(mz[idx4])+ bias
 '''
-def F29(solution=None, shift_data, matrix,f_bias):
+def F29(solution=None, shift_data=None, matrix=None,f_bias=None):
     num_funcs = 3
     #   "F29":"Composition Function 7"
     problem_size = len(solution)
@@ -721,7 +721,7 @@ def F22_aux(solution=None, name="Hybrid Function 6", shift_data_file="shift_data
     return f10_katsuura__(mz[idx1]) + f11_happy_cat__(mz[idx2]) + f13_expanded_griewank__(mz[idx3]) + \
            f9_modified_schwefel__(mz[idx4]) + f5_ackley__(mz[idx5]) + 
 '''
-def F30(solution=None, shift_data, matrix,f_bias):
+def F30(solution=None, shift_data=None, matrix=None,f_bias=None):
     num_funcs = 3
     #   "F30":"Composition Function 8"
     problem_size = len(solution)
