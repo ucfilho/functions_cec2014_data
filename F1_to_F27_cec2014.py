@@ -467,7 +467,7 @@ def F27(solution=None, shift_data=None, matrix=None,f_bias=None):
     result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
     return result + f_bias
 
-'''
+
 def F28(solution=None, shift_data, matrix,f_bias):
     #   "F28":"Composition Function 6"
     problem_size = len(solution)
@@ -754,4 +754,4 @@ def F30(solution=None, shift_data, matrix,f_bias):
     for i in range(0, num_funcs):
         result += (weights[i] / sw) * fits[i]
     return result + f_bias
-'''
+''''''
