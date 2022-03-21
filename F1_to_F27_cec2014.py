@@ -208,7 +208,7 @@ def F18(solution=None, shift_data=None, matrix=None,f_bias=None):
     idx2 = shuffle[n1:(n1 + n2)]
     idx3 = shuffle[(n1 + n2):]
     mz = dot(solution - shift_data, matrix)
-    return f2_bent_cigar__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f8_rastrigin__(mz[idx3]) + bias
+    return f2_bent_cigar__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f8_rastrigin__(mz[idx3]) #+ bias
 
 
 def F19(solution=None, shift_data=None, matrix=None,f_bias=None):
@@ -226,7 +226,7 @@ def F19(solution=None, shift_data=None, matrix=None,f_bias=None):
     idx3 = shuffle[(n1 + n2):(n1+n2+n3)]
     idx4 = shuffle[n1+n2+n3:]
     mz = dot(solution - shift_data, matrix)
-    return f7_griewank__(mz[idx1]) + f6_weierstrass__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) + f14_expanded_scaffer__(mz[idx4])+ bias
+    return f7_griewank__(mz[idx1]) + f6_weierstrass__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) + f14_expanded_scaffer__(mz[idx4]) #+ bias
 
 
 def F20(solution=None, shift_data=None, matrix=None,f_bias=None):
@@ -245,7 +245,8 @@ def F20(solution=None, shift_data=None, matrix=None,f_bias=None):
     idx3 = shuffle[(n1 + n2):(n1 + n2 + n3)]
     idx4 = shuffle[n1 + n2 + n3:]
     mz = dot(solution - shift_data, matrix)
-    return f12_hgbat__(mz[idx1]) + f3_discus__(mz[idx2]) + f13_expanded_griewank__(mz[idx3]) + f8_rastrigin__(mz[idx4]) + bias
+    result = f12_hgbat__(mz[idx1]) + f3_discus__(mz[idx2]) + f13_expanded_griewank__(mz[idx3]) + f8_rastrigin__(mz[idx4]) #+ bias
+    return result
 
 
 def F21(solution=None, shift_data=None, matrix=None,bias=None):
@@ -266,8 +267,10 @@ def F21(solution=None, shift_data=None, matrix=None,bias=None):
     idx4 = shuffle[(n1+n2+n3):(n1+n2+n3+n4)]
     idx5 = shuffle[n1+n2+n3+n4:]
     mz = dot(solution - shift_data, matrix)
-    return f14_expanded_scaffer__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) + \
-           f9_modified_schwefel__(mz[idx4]) + f1_elliptic__(mz[idx5]) + bias
+    result =  f14_expanded_scaffer__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f4_rosenbrock__(mz[idx3])
+    result = result + f9_modified_schwefel__(mz[idx4]) + f1_elliptic__(mz[idx5]) #+ bias
+    return result
+           
 
 
 def F22(solution=None, shift_data=None, matrix=None,bias=None):
@@ -329,7 +332,7 @@ def F23(solution=None, shift_data=None, matrix=None,f_bias=None):
 
     sw = sum([w1, w2, w3, w4, w5])
     result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
-    return result + f_bias
+    return result #+ f_bias
 
 
 def F24(solution=None, shift_data=None, matrix=None,f_bias=None):
@@ -358,7 +361,7 @@ def F24(solution=None, shift_data=None, matrix=None,f_bias=None):
 
     sw = sum([w1, w2, w3])
     result = (w1 * g1 + w2 * g2 + w3 * g3) / sw
-    return result + f_bias
+    return result #+ f_bias
 
 
 def F25(solution=None, shift_data=None, matrix=None,f_bias=None):
@@ -387,7 +390,7 @@ def F25(solution=None, shift_data=None, matrix=None,f_bias=None):
 
     sw = sum([w1, w2, w3])
     result = (w1 * g1 + w2 * g2 + w3 * g3) / sw
-    return result + f_bias
+    return result #+ f_bias
 
 
 def F26(solution=None, shift_data=None, matrix=None,f_bias=None):
@@ -426,7 +429,7 @@ def F26(solution=None, shift_data=None, matrix=None,f_bias=None):
 
     sw = sum([w1, w2, w3, w4, w5])
     result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
-    return result + f_bias
+    return result #+ f_bias
 
 
 def F27(solution=None, shift_data=None, matrix=None,f_bias=None):
@@ -465,7 +468,7 @@ def F27(solution=None, shift_data=None, matrix=None,f_bias=None):
 
     sw = sum([w1, w2, w3, w4, w5])
     result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
-    return result + f_bias
+    return result #+ f_bias
 '''
 def F28():
 # def F28(solution=None, shift_data=None, matrix=None,f_bias=None):
