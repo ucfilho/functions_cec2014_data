@@ -108,7 +108,7 @@ def f14_expanded_scaffer__(solution=None):
     return result
 
 #def F28(solution=None, shift_data=None, matrix=None,f_bias=None):
-def F28(solution , shift_data , matrix,sda_01, ma_01, Fba_01):
+def F28(solution , shift_data , matrix,sda_01, ma_01):
     problem_size = len(solution)
     xichma = array([10, 20, 30, 40, 50])
     lamda = array([2.5, 10, 2.5, 5e-4, 1e-6])
@@ -168,12 +168,13 @@ def F28(solution , shift_data , matrix,sda_01, ma_01, Fba_01):
     w5 = (1.0 / sqrt(sum(t5 ** 2))) * exp(-sum(t5 ** 2) / (2 * problem_size * xichma[4] ** 2))
 
     sw = sum([w1, w2, w3, w4, w5])
-    result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
+    f_bias = 2800
+    result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw + f_bias
     
     return result 
 
 # def F29(solution=None, name="Composition Function 7", shift_data_file="shift_data_29.txt", f_bias=2900):
-def F29(solution , shift_data , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma_03, Fba_01):
+def F29(solution , shift_data , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma_03):
     num_funcs = 3
     problem_size = len(solution)
     xichma = array([10, 30, 50])
@@ -221,6 +222,24 @@ def F29(solution , shift_data , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma
         result = f2_bent_cigar__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f8_rastrigin__(mz[idx3]) # + bias # USING BIAS ZERO!!!
         return result
     
+    def F19(solution,sda_03, ma_03, shuffle):
+        problem_size = len(solution)
+        p = array([0.2, 0.2, 0.3, 0.3])
+        n1 = int(ceil(p[0] * problem_size))
+        n2 = int(ceil(p[1] * problem_size))
+        n3 = int(ceil(p[2] * problem_size))
+
+        shift_data = sda_03
+        matrix = ma_03
+        shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
+        idx1 = shuffle[:n1]
+        idx2 = shuffle[n1:(n1 + n2)]
+        idx3 = shuffle[(n1 + n2):(n1+n2+n3)]
+        idx4 = shuffle[n1+n2+n3:]
+        mz = dot(solution - shift_data, matrix)
+        result = f7_griewank__(mz[idx1]) + f6_weierstrass__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) + f14_expanded_scaffer__(mz[idx4])
+        return result
+    
     def __fi__(solution=None, idx=None):
         if idx == 0:
             result = F17(solution,sda_01, ma_01,shuffle) # sda_01, ma_01 data from F17
@@ -229,7 +248,7 @@ def F29(solution , shift_data , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma
             result = F18(solution,sda_02, ma_02, shuffle) # sda_02, ma_02 data from F18
             return result
         else:
-            result = F18(solution,sda_03, ma_03, shuffle) # sda_03, ma_03 data from F19
+            result = F19(solution,sda_03, ma_03, shuffle) # sda_03, ma_03 data from F19
             return result
         
     ##################################################
@@ -245,6 +264,7 @@ def F29(solution , shift_data , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma
         fits[i] = t1
     sw = sum(weights)
     result = 0.0
+    f_bias = 2900
     for i in range(0, num_funcs):
-        result += (weights[i] / sw) * fits[i]
-    return result + f_bias
+        result += (weights[i] / sw) * fits[i]+ f_bias
+    return result 
