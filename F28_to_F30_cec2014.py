@@ -171,3 +171,80 @@ def F28(solution , shift_data , matrix,sda_01, ma_01, Fba_01):
     result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
     
     return result 
+
+# def F29(solution=None, name="Composition Function 7", shift_data_file="shift_data_29.txt", f_bias=2900):
+def F29(solution , shift_data , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma_03, Fba_01):
+    num_funcs = 3
+    problem_size = len(solution)
+    xichma = array([10, 30, 50])
+    lamda = array([1, 1, 1])
+    bias = array([0, 100, 200])
+    '''
+    if problem_size > 100:
+        print("CEC 2014 not support for problem size > 100")
+        return 1
+    shift_data = load_matrix_data__(shift_data_file)[:problem_size]
+    shift_data = shift_data[:, :problem_size]
+    '''
+    ##################################################
+    ###########                            ###########
+    ##################################################
+    
+    def F17(solution, sda_01, ma_01, shuffle):  # sda_01 =  shift F17, matrix = matrix F17 , shufle = F29 YOU NEED TO DEFINE SHUFFLE!!!!
+        problem_size = len(solution)
+        p = array([0.3, 0.3, 0.4])
+        n1 = int(ceil(p[0] * problem_size))
+        n2 = int(ceil(p[1] * problem_size))
+
+        shift_data = sda_01
+        matrix = ma_01
+        shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
+        idx1 = shuffle[:n1]
+        idx2 = shuffle[n1:(n1+n2)]
+        idx3 = shuffle[(n1+n2):]
+        mz = dot(solution - shift_data, matrix)
+        return f9_modified_schwefel__(mz[idx1]) + f8_rastrigin__(mz[idx2]) + f1_elliptic__(mz[idx3]) # + bias # USING BIAS ZERO!!!
+    
+    def F18(solution, sda_02, ma_02, shuffle):  # sda_02 =  shift F18, matrix = matrix F18 , YOU NEED TO DEFINE sda_02 ma_02 too!!!!
+        problem_size = len(solution)
+        p = array([0.3, 0.3, 0.4])
+        n1 = int(ceil(p[0] * problem_size))
+        n2 = int(ceil(p[1] * problem_size))
+
+        shift_data = sda_02
+        matrix = ma_02
+        shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
+        idx1 = shuffle[:n1]
+        idx2 = shuffle[n1:(n1 + n2)]
+        idx3 = shuffle[(n1 + n2):]
+        mz = dot(solution - shift_data, matrix)
+        result = f2_bent_cigar__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f8_rastrigin__(mz[idx3]) # + bias # USING BIAS ZERO!!!
+        return result
+    
+    def __fi__(solution=None, idx=None):
+        if idx == 0:
+            result = F17(solution,sda_01, ma_01,shuffle) # sda_01, ma_01 data from F17
+            return result
+        elif idx == 1:
+            result = F18(solution,sda_02, ma_02, shuffle) # sda_02, ma_02 data from F18
+            return result
+        else:
+            result = F18(solution,sda_03, ma_03, shuffle) # sda_03, ma_03 data from F19
+            return result
+        
+    ##################################################
+    ###########                            ###########
+    ##################################################
+    weights = ones(num_funcs)
+    fits = ones(num_funcs)
+    for i in range(0, num_funcs):
+        t1 = lamda[i] * __fi__(solution, i) + bias[i]
+        t2 = 1.0 / sqrt(sum((solution - shift_data[i]) ** 2))
+        w_i = t2 * exp(-sum((solution - shift_data[i]) ** 2) / (2 * problem_size * xichma[i] ** 2))
+        weights[i] = w_i
+        fits[i] = t1
+    sw = sum(weights)
+    result = 0.0
+    for i in range(0, num_funcs):
+        result += (weights[i] / sw) * fits[i]
+    return result + f_bias
