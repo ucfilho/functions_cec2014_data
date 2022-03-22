@@ -107,12 +107,14 @@ def f14_expanded_scaffer__(solution=None):
         result += __xy__(solution[i], solution[i + 1])
     return result
 
-def F28(solution=None, shift_data=None, matrix=None,f_bias=None):
+#def F28(solution=None, shift_data=None, matrix=None,f_bias=None):
+def F28(solution , shift_data , matrix,sda_01, ma_01, Fba_01)
     problem_size = len(solution)
     xichma = array([10, 20, 30, 40, 50])
     lamda = array([2.5, 10, 2.5, 5e-4, 1e-6])
     bias = array([0, 100, 200, 300, 400])
-
+    
+    '''
     if problem_size in SUPPORT_DIMENSION_2:
         f_matrix = f_matrix + str(problem_size) + ".txt"
     else:
@@ -121,10 +123,28 @@ def F28(solution=None, shift_data=None, matrix=None,f_bias=None):
     shift_data = load_matrix_data__(f_shift_file)[:problem_size]
     shift_data = shift_data[:, :problem_size]
     matrix = load_matrix_data__(f_matrix)
+    '''
+    ##################################################
+    ###########                            ###########
+    ##################################################
+    
+    def F15(solution, sda_01, ma_01):
+        problem_size = len(solution)
+        bias = 0 # bias in composed is zero not 1500
+
+        shift_data = sda_01[:problem_size]
+        matrix = ma_01
+        z = 5 * (solution - shift_data) / 100
+        z = dot(z, matrix) + 1
+        result = f13_expanded_griewank__(z) + bias
+        return result
 
     # 1. Rotated Expanded Griewank’s plus Rosenbrock’s Function F15’
     t1 = solution - shift_data[0]
-    g1 = lamda[0] * F15(solution, bias=0) + bias[0]
+    g1 = lamda[0] * F15(solution, sda_01, ma_01) + bias[0]
+    ##################################################
+    ###########                            ###########
+    ##################################################
     w1 = (1.0 / sqrt(sum(t1 ** 2))) * exp(-sum(t1 ** 2) / (2 * problem_size * xichma[0] ** 2))
 
     # 2. Rotated HappyCat Function F13’
