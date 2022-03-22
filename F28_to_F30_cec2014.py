@@ -108,7 +108,7 @@ def f14_expanded_scaffer__(solution=None):
     return result
 
 #def F28(solution=None, shift_data=None, matrix=None,f_bias=None):
-def F28(solution , shift_data , matrix,sda_01, ma_01, Fba_01)
+def F28(solution , shift_data , matrix,sda_01, ma_01, Fba_01):
     problem_size = len(solution)
     xichma = array([10, 20, 30, 40, 50])
     lamda = array([2.5, 10, 2.5, 5e-4, 1e-6])
