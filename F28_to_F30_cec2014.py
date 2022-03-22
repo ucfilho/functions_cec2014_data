@@ -199,7 +199,7 @@ def F29(solution , shift_data , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma
 
         shift_data = sda_01
         matrix = ma_01
-        shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
+        #shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
         idx1 = shuffle[:n1]
         idx2 = shuffle[n1:(n1+n2)]
         idx3 = shuffle[(n1+n2):]
@@ -214,7 +214,7 @@ def F29(solution , shift_data , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma
 
         shift_data = sda_02
         matrix = ma_02
-        shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
+        #shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
         idx1 = shuffle[:n1]
         idx2 = shuffle[n1:(n1 + n2)]
         idx3 = shuffle[(n1 + n2):]
@@ -231,7 +231,7 @@ def F29(solution , shift_data , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma
 
         shift_data = sda_03
         matrix = ma_03
-        shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
+        #shuffle = (shuffle[:problem_size] - ones(problem_size)).astype(int)
         idx1 = shuffle[:n1]
         idx2 = shuffle[n1:(n1 + n2)]
         idx3 = shuffle[(n1 + n2):(n1+n2+n3)]
