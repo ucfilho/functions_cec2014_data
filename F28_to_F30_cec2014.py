@@ -174,7 +174,7 @@ def F28(solution , shift_data , matrix,sda_01, ma_01):
     return result 
 
 # def F29(solution=None, name="Composition Function 7", shift_data_file="shift_data_29.txt", f_bias=2900):
-def F29(solution , shift_data , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma_03):
+def F29(solution , shift_data, shuffle , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma_03):
     num_funcs = 3
     problem_size = len(solution)
     xichma = array([10, 30, 50])
