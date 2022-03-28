@@ -268,3 +268,111 @@ def F29(solution , shift_data, shuffle , matrix, sda_01, ma_01, sda_02, ma_02, s
     for i in range(0, num_funcs):
         result += (weights[i] / sw) * fits[i]+ f_bias
     return result 
+
+# def F30(solution=None, name="Composition Function 8", shift_data_file="shift_data_30.txt", f_bias=3000):
+def F30(solution , shift_data, shuffle , matrix, sda_01, ma_01, sda_02, ma_02, sda_03, ma_03):
+    num_funcs = 3
+    problem_size = len(solution)
+    xichma = array([10, 30, 50])
+    lamda = array([1, 1, 1])
+    bias = array([0, 100, 200])
+    #################################################
+    #######                                     #####
+    #################################################
+    '''
+    if problem_size > 100:
+        print("CEC 2014 not support for problem size > 100")
+        return 1
+    shift_data = load_matrix_data__(shift_data_file)[:problem_size]
+    shift_data = shift_data[:, :problem_size]
+    '''
+    #################################################
+    #######                                     #####
+    #################################################
+    def F20(solution, sda_01, ma_01, shuffle):
+        problem_size = len(solution)
+        p = array([0.2, 0.2, 0.3, 0.3])
+        n1 = int(ceil(p[0] * problem_size))
+        n2 = int(ceil(p[1] * problem_size))
+        n3 = int(ceil(p[2] * problem_size))
+
+        shift_data = sda_01
+        matrix = ma_01
+        #shuffle = shuffle
+        idx1 = shuffle[:n1]
+        idx2 = shuffle[n1:(n1 + n2)]
+        idx3 = shuffle[(n1 + n2):(n1 + n2 + n3)]
+        idx4 = shuffle[n1 + n2 + n3:]
+        mz = dot(solution - shift_data, matrix)
+        result = f12_hgbat__(mz[idx1]) + f3_discus__(mz[idx2]) + f13_expanded_griewank__(mz[idx3]) + f8_rastrigin__(mz[idx4]) #+ bias
+        return result
+    
+    def F21(solution, sda_02, ma_02, shuffle):
+        problem_size = len(solution)
+        p = array([0.1, 0.2, 0.2, 0.2, 0.3])
+        n1 = int(ceil(p[0] * problem_size))
+        n2 = int(ceil(p[1] * problem_size))
+        n3 = int(ceil(p[2] * problem_size))
+        n4 = int(ceil(p[3] * problem_size))
+
+        shift_data = sda_02
+        matrix = ma_02
+        #shuffle = shuffle
+        
+        idx1 = shuffle[:n1]
+        idx2 = shuffle[n1:(n1 + n2)]
+        idx3 = shuffle[(n1 + n2):(n1 + n2 + n3)]
+        idx4 = shuffle[(n1+n2+n3):(n1+n2+n3+n4)]
+        idx5 = shuffle[n1+n2+n3+n4:]
+        mz = dot(solution - shift_data, matrix)
+        result = f14_expanded_scaffer__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) 
+        result = result + f9_modified_schwefel__(mz[idx4]) + f1_elliptic__(mz[idx5])
+        return  result
+
+   def F22(solution, sda_03, ma_03, shuffle):
+        problem_size = len(solution)
+        p = array([0.1, 0.2, 0.2, 0.2, 0.3])
+        n1 = int(ceil(p[0] * problem_size))
+        n2 = int(ceil(p[1] * problem_size))
+        n3 = int(ceil(p[2] * problem_size))
+        n4 = int(ceil(p[3] * problem_size))
+
+        shift_data = sda_03
+        matrix = ma_03
+        #shuffle = shuffle
+        
+        idx1 = shuffle[:n1]
+        idx2 = shuffle[n1:(n1 + n2)]
+        idx3 = shuffle[(n1 + n2):(n1 + n2 + n3)]
+        idx4 = shuffle[(n1 + n2 + n3):(n1 + n2 + n3 + n4)]
+        idx5 = shuffle[n1 + n2 + n3 + n4:]
+        mz = dot(solution - shift_data, matrix)
+        result = f10_katsuura__(mz[idx1]) + f11_happy_cat__(mz[idx2]) + f13_expanded_griewank__(mz[idx3])
+        result = result + f9_modified_schwefel__(mz[idx4]) + f5_ackley__(mz[idx5])
+        
+        return  result
+
+    def __fi__(solution=None, idx=None):
+        if idx == 0:
+            return F20(solution,sda_01, ma_01,shuffle) # sda_01, ma_01 data from F17
+            # F20(solution, bias=0, shuffle=30)
+        elif idx == 1:
+            return F21(solution,sda_02, ma_02,shuffle) # sda_02, ma_02 data from F21
+            # return F21(solution, bias=0, shuffle=30)
+        else:
+            return F22(solution,sda_03, ma_03,shuffle) # sda_03, ma_03 data from F22
+            # return F22(solution, bias=0, shuffle=30)
+
+    weights = ones(num_funcs)
+    fits = ones(num_funcs)
+    for i in range(0, num_funcs):
+        t1 = lamda[i] * __fi__(solution, i) + bias[i]
+        t2 = 1.0 / sqrt(sum((solution - shift_data[i]) ** 2))
+        w_i = t2 * exp(-sum((solution - shift_data[i]) ** 2) / (2 * problem_size * xichma[i] ** 2))
+        weights[i] = w_i
+        fits[i] = t1
+    sw = sum(weights)
+    result = 0.0
+    for i in range(0, num_funcs):
+        result += (weights[i] / sw) * fits[i]
+    return result #+ f_bias
