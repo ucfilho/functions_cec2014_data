@@ -328,8 +328,9 @@ def F30(solution , shift_data, shuffle , matrix, sda_01, ma_01, sda_02, ma_02, s
         result = f14_expanded_scaffer__(mz[idx1]) + f12_hgbat__(mz[idx2]) + f4_rosenbrock__(mz[idx3]) 
         result = result + f9_modified_schwefel__(mz[idx4]) + f1_elliptic__(mz[idx5])
         return  result
+   
 
-   def F22(solution, sda_03, ma_03, shuffle):
+    def F22(solution, sda_03, ma_03, shuffle):
         problem_size = len(solution)
         p = array([0.1, 0.2, 0.2, 0.2, 0.3])
         n1 = int(ceil(p[0] * problem_size))
