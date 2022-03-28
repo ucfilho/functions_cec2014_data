@@ -169,7 +169,7 @@ def F28(solution , shift_data , matrix,sda_01, ma_01):
 
     sw = sum([w1, w2, w3, w4, w5])
     f_bias = 2800
-    result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw + f_bias
+    result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw #+ f_bias
     
     return result 
 
