@@ -26,7 +26,7 @@ def NamesFunctions():
 
 def TypeFunctions():
     result = {'F1':'shift_rotate',
-              'F3':'shift_rotate', 
+              'F2':'shift_rotate','F3':'shift_rotate',  
               'F4':'shift_rotate','F5':'shift_rotate', 
               'F6':'shift_rotate','F7':'shift_rotate', 
               'F8':'shift_rotate', 'F9':'shift_rotate',
