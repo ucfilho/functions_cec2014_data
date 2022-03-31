@@ -216,7 +216,7 @@ def F10(solution , shift_data , matrix,shuffle):
     shift_data = shift_data[:problem_size]
     z = 1000 * (solution - shift_data) / 100
     z = dot(z, matrix)
-    return f9_modified_schwefel__(z) + bias
+    return f9_modified_schwefel__(z) 
 
 
 def F11(solution , shift_data , matrix,shuffle):
