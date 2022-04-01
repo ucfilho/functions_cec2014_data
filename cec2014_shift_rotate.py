@@ -24,9 +24,7 @@ def f1_elliptic__(solution=None):
     if(len(solution.shape)>1):
         for ii in solution:
             z = ii * 1.0
-            print('===== z=====')
-            print(z)
-            print('==========')
+
             for i in range(len(z)):
                 result += (10**6)**(i/(len(z)-1)) * z[i]**2           
     else:
