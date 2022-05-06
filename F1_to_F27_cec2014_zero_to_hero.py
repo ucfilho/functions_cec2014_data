@@ -243,6 +243,86 @@ def F26(solution):
 def F27(solution):
     #   "F27":"Composition Function 5"
     return solution
+
+def F15_hybrid(solution , shift_data , matrix,shuffle):
+    #   "F15":"Shifted and Rotated Expanded Griewank’s plus Rosenbrock’s Function"
+    z = 5 * (solution - shift_data) / 100
+    z = dot(z, matrix) + 1
+    return f13_expanded_griewank__(z) 
+
+def F28(solution , shift_data , matrix,shuffle):
+    problem_size = len(solution)
+    xichma = array([10, 20, 30, 40, 50])
+    lamda = array([2.5, 10, 2.5, 5e-4, 1e-6])
+    bias = array([0, 100, 200, 300, 400])
+
+    # 1. Rotated Expanded Griewank’s plus Rosenbrock’s Function F15’
+    t1 = solution - shift_data[0]
+    g1 = lamda[0] * F15_hybrid(solution , shift_data , matrix,shuffle) + bias[0]
+    w1 = (1.0 / sqrt(sum(t1 ** 2))) * exp(-sum(t1 ** 2) / (2 * problem_size * xichma[0] ** 2))
+
+    # 2. Rotated HappyCat Function F13’
+    t2 = solution - shift_data[1]
+    g2 = lamda[1] * f11_happy_cat__(dot(matrix[problem_size:2 * problem_size, :], t2)) + bias[1]
+    w2 = (1.0 / sqrt(sum(t2 ** 2))) * exp(-sum(t2 ** 2) / (2 * problem_size * xichma[1] ** 2))
+
+    # 3. Rotated Schwefel's Function F11’
+    t3 = solution - shift_data[2]
+    g3 = lamda[2] * f9_modified_schwefel__(dot(matrix[2 * problem_size: 3 * problem_size, :], t3)) + bias[2]
+    w3 = (1.0 / sqrt(sum(t3 ** 2))) * exp(-sum(t3 ** 2) / (2 * problem_size * xichma[2] ** 2))
+
+    # 4. Rotated Expanded Scaffer’s F6 Function F16’
+    t4 = solution - shift_data[3]
+    g4 = lamda[3] * f14_expanded_scaffer__(dot(matrix[3 * problem_size: 4 * problem_size, :], t4)) + bias[3]
+    w4 = (1.0 / sqrt(sum(t4 ** 2))) * exp(-sum(t4 ** 2) / (2 * problem_size * xichma[3] ** 2))
+
+    # 5. Rotated High Conditioned Elliptic Function F1’
+    t5 = solution - shift_data[4]
+    g5 = lamda[4] * f1_elliptic__(dot(matrix[4 * problem_size:, :], t5)) + bias[4]
+    w5 = (1.0 / sqrt(sum(t5 ** 2))) * exp(-sum(t5 ** 2) / (2 * problem_size * xichma[4] ** 2))
+
+    sw = sum([w1, w2, w3, w4, w5])
+    result = (w1 * g1 + w2 * g2 + w3 * g3 + w4 * g4 + w5 * g5) / sw
+    return result #+ f_bias
+
+
+def F29(solution=None, name="Composition Function 7", shift_data_file="shift_data_29.txt", f_bias=2900):
+    num_funcs = 3
+    problem_size = len(solution)
+    xichma = array([10, 30, 50])
+    lamda = array([1, 1, 1])
+    bias = array([0, 100, 200])
+
+    if problem_size > 100:
+        print("CEC 2014 not support for problem size > 100")
+        return 1
+    shift_data = load_matrix_data__(shift_data_file)[:problem_size]
+    shift_data = shift_data[:, :problem_size]
+
+    def __fi__(solution=None, idx=None):
+        if idx == 0:
+            return F17(solution, bias=0, shuffle=29)
+        elif idx == 1:
+            return F18(solution, bias=0, shuffle=29)
+        else:
+            return F19(solution, bias=0, shuffle=29)
+
+    weights = ones(num_funcs)
+    fits = ones(num_funcs)
+    for i in range(0, num_funcs):
+        t1 = lamda[i] * __fi__(solution, i) + bias[i]
+        t2 = 1.0 / sqrt(sum((solution - shift_data[i]) ** 2))
+        w_i = t2 * exp(-sum((solution - shift_data[i]) ** 2) / (2 * problem_size * xichma[i] ** 2))
+        weights[i] = w_i
+        fits[i] = t1
+    sw = sum(weights)
+    result = 0.0
+    for i in range(0, num_funcs):
+        result += (weights[i] / sw) * fits[i]
+    return result + f_bias
+
+
+
 '''
 def F28():
 # def F28(solution=None, shift_data=None, matrix=None,f_bias=None):
