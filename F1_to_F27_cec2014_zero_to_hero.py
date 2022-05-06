@@ -246,6 +246,8 @@ def F27(solution):
 
 def F15_hybrid(solution , shift_data , matrix,shuffle):
     #   "F15":"Shifted and Rotated Expanded Griewank’s plus Rosenbrock’s Function"
+    problem_size = len(solution)
+    shift_data = shift_data[:problem_size]
     z = 5 * (solution - shift_data) / 100
     z = dot(z, matrix) + 1
     return f13_expanded_griewank__(z) 
